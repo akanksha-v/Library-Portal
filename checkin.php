@@ -2,9 +2,13 @@
 <head>
     <title>check-in</title>
 </head>
-
+<style> 
+button:hover{
+       transform:scale(1.10);
+       cursor:pointer;
+   }</style>
 <body>
-<p>Choose books You want to check-in :</p>
+<p>Choose books You want to check-in :<br/><br/></p>
 
 <?php
 
@@ -30,18 +34,34 @@ $result = mysqli_query($conn,$sql);
    {while($row = mysqli_fetch_row($result))
  {
     echo "<tr><td style='width: 150px; text-align:center;' >".$row[0]."</td><td style='width: 300px;text-align:center;'>".$row[1]."</td></tr>";
-    echo "connected";}}
+    }}
     
     echo "</table>";
 
 
-echo "<form action='admin.php' method='POST'>";
-echo   "Type the name of book u wanna check-in:<br/>";
-echo  "<input type='number' name='book-id' required><br/>";
-echo  "<input type='text' name='book-name' required><br/>";
+echo "<form action='checkin.php' method='POST'>";
+echo   "Type the name of book u wanna check-in:<br/><br/>";
+echo  "Book-id:&nbsp;<input type='number' name='book-id' required><br/>";
+echo  "Book-name:&nbsp;<input type='text' name='book-name' required><br/><br/>";
 echo  "<button name='submit'>Submit the request</button>";
 echo  "</form>"; 
 
+if(isset($_POST["submit"]))
+{$id=$_POST["book-id"];
+$name=$_POST["book-name"];
+
+$sql = "INSERT INTO `for check-in`
+SELECT * FROM `prakhar` WHERE `book-id` ='$id'";
+
+if ($conn->query($sql) === TRUE)
+{
+$del="DELETE FROM `prakhar` WHERE `book-id` ='$id'";
+if ($conn->query($del) === TRUE) {
+    echo "<script type= 'text/javascript'>alert('Request sent!');</script>";
+    } else {
+    echo "<script type= 'text/javascript'>alert('Error: " . $sql . "<br>" . $conn->error."');</script>";
+    }}
+}
 ?>
 
 </body>    
