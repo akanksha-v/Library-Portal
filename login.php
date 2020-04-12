@@ -4,8 +4,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Gotu&display=swap" rel="stylesheet">
     <style>
     body{
-        /* text-align: center; */
-
         margin:0px auto;
         font-family: 'Gotu', sans-serif;
         font-size:26px;
@@ -71,8 +69,8 @@ Password:&nbsp;<input type="password" name="password" required><br/>
 <div id="register"> Not register yet? &nbsp; &nbsp;<a href="registration.php"><button name="register">Register</button></a><br/><br/></div>
 
 <?php
-
-$connection= new mysqli("localhost", "akanksha","Prakhar2105","info");
+require "connection.php";
+// $connection= new mysqli("localhost", "akanksha","Prakhar2105","info");
     $enroll = $_POST["enroll-no"];
     $password = $_POST["password"];
 
@@ -81,7 +79,7 @@ $connection= new mysqli("localhost", "akanksha","Prakhar2105","info");
 
    $result = "SELECT enroll,password FROM students WHERE enroll='$enroll' AND password='$password'" ;
 
- $query = mysqli_query($connection,$result);
+ $query = mysqli_query($conn,$result);
   
    if($query)
    { $row = mysqli_num_rows($query);

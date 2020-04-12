@@ -56,18 +56,19 @@
     <?php
 
 if(isset($_POST["register"])){
-    $servername = "localhost";
-    $username = "akanksha";
-    $password = "Prakhar2105";
-    $dbname = "info";
+    require "connection.php";
+    // $servername = "localhost";
+    // $username = "akanksha";
+    // $password = "Prakhar2105";
+    // $dbname = "info";
     
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    // // Create connection
+    // $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check connection
-    if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-    }
+    // // Check connection
+    // if ($conn->connect_error) {
+    // die("Connection failed: " . $conn->connect_error);
+    // }
     $enroll=$_POST["enroll-no"];
     $name=$_POST["name"];
     $email=$_POST["email"];

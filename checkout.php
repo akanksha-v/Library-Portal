@@ -11,17 +11,17 @@ button:hover{
 <p>Choose books You want to check-out :<br/><br/></p>
 
 <?php
-
-$servername = "localhost";
-    $username = "akanksha";
-    $password = "Prakhar2105";
-    $dbname = "info";
+require "connection.php";
+// $servername = "localhost";
+//     $username = "akanksha";
+//     $password = "Prakhar2105";
+//     $dbname = "info";
     
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-    }
+//     // Create connection
+//     $conn = new mysqli($servername, $username, $password, $dbname);
+// if ($conn->connect_error) {
+//     die("Connection failed: " . $conn->connect_error);
+//     }
 
 echo "<table>";
 echo "<tr><th>Book-id</th><th>Book-name</th></tr>";
